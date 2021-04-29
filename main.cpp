@@ -1,6 +1,15 @@
+//Dawson Douglas & Jarrit Learoyd
+//5/2/21
+//Final Semester Project
+//To store information in a CSV file that can import into any spreadsheet program
+
 /** @file */
 #include <iostream>
 #include "Mono8BitManager.h"
+/** #include "Mono16BitManager.h"
+#include "Stereo8BitManager.h"
+#include "Stereo16BitManager.h"
+**/
 #include "PreprocessManager.h"
 
 /**
