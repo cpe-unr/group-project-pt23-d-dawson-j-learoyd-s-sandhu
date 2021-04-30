@@ -2,16 +2,19 @@
 #define MONO16BITMANAGER_CODE
 
 #include "AudioManager.h"
-#include <iostream>
 
-class Mono16BitManager : public AudioManager
+
+class Mono16BitManager : public AudioManager<short*>
 {
 private:
-    unsigned char* buffer;
+    short* buffer;
 public:
     Mono16BitManager(/* args */);
     ~Mono16BitManager();
     void captureData(const std::string &fileName) override;
+    short* getBuffer() override;
+    Header getHeader() override;
+    MetaData getMetaData() override;
     void print() override;
 };
 

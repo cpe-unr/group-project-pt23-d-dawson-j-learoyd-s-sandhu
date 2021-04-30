@@ -19,6 +19,21 @@ void Mono8BitManager::captureData(const std::string &fileName) {
 
 }
 
+unsigned char* Mono8BitManager::getBuffer()
+{
+    return Mono8BitManager::buffer;
+}
+
+Header Mono8BitManager::getHeader()
+{
+    return Mono8BitManager::header;
+}
+
+MetaData Mono8BitManager::getMetaData()
+{
+    return Mono8BitManager::metadata;
+}
+
 void Mono8BitManager::print(){
     std::cout << header.riff_header << std::endl;
     std::cout << header.wav_size << std::endl;
@@ -34,4 +49,10 @@ void Mono8BitManager::print(){
     std::cout << metadata.meta_sub1 << std::endl;
     std::cout << metadata.sub1_characters << std::endl;
     std::cout << metadata.sub1_data << std::endl;
+
+    for (size_t i = 0; i < 44100; i++)
+    {
+        std::cout << (int)buffer[i] << std::endl;
+    }
+    
 }
