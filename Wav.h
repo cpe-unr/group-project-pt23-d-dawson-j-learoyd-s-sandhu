@@ -9,7 +9,7 @@ class Wav
 private:
     Header header;
     unsigned char* eightBuffer;
-    short sixteenBuffer;
+    short* sixteenBuffer;
     bool isStereo = false;
     bool is16Bit = false;
     MetaData metadata;
