@@ -1,10 +1,10 @@
 #include "Mono16BitManager.h"
 
-Mono8BitManager::Mono8BitManager(/* args */)
+Mono16BitManager::Mono16BitManager(/* args */)
 {
 }
 
-Mono8BitManager::~Mono8BitManager()
+Mono16BitManager::~Mono16BitManager()
 {
 }
 
