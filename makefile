@@ -1,23 +1,29 @@
-audio: main.o PreprocessManager.o Mono8BitManager.o Mono16BitManager.o Stereo8BitManager.o Stereo16BitManager.o
-	g++ -std=c++11 -o audio main.o PreprocessManager.o Mono8BitManager.o
+audio: main.o PreprocessManager.o EightBitManager.o SixteenBitManager.o Noisegate.o Wav.o Echo.h Normalization.h
+	g++ -std=c++11 -o audio main.o PreprocessManager.o EightBitManager.o SixteenBitManager.o Noisegate.o Wav.o Echo.o Normalization.o
 
-main.o: main.cpp Mono8BitManager.h PreprocessManager.h
+main.o: main.cpp EightBitManager.h SixteenBitManager.h PreprocessManager.h Noisegate.h Wav.h
 	g++ -std=c++11 -c main.cpp
 
-PreprocessManager.o: PreprocessManager.cpp PreprocessManager.h AudioManager.h  Header.h
+PreprocessManager.o: PreprocessManager.cpp PreprocessManager.h AudioManager.h Header.h MetaData.h Wav.h
 	g++ -std=c++11 -c PreprocessManager.cpp
 
-Mono8BitManager.o: Mono8BitManager.cpp Mono8BitManager.h AudioManager.h
-	g++ -std=c++11 -c Mono8BitManager.cpp
+EightBitManager.o: EightBitManager.cpp EightBitManager.h AudioManager.h Header.h MetaData.h Wav.h
+	g++ -std=c++11 -c EightBitManager.cpp
 
-Mono16BitManager.o: Mono16BitManager.cpp Mono16BitManager.h AudioManager.h
-	g++ -std=c++11 -c Mono16BitManager.cpp
+SixteenBitManager.o: SixteenBitManager.cpp SixteenBitManager.h AudioManager.h Header.h MetaData.h Wav.h
+	g++ -std=c++11 -c SixteenBitManager.cpp
 
-Stereo8BitManager.o: Stereo8BitManager.cpp Stereo8BitManager.h AudioManager.h
-	g++ -std=c++11 -c Stereo8BitManager.cpp
+Noisegate.o: Noisegate.cpp Noisegate.h IAudioProcessor.h Wav.h
+	g++ -std=c++11 -c Noisegate.cpp
 
-Stereo16BitManager.o: Stereo16BitManager.cpp Stereo16BitManager.h AudioManager.h
-	g++ -std=c++11 -c Stereo16BitManager.cpp
+Wav.o: Wav.cpp Wav.h MetaData.h
+	g++ -std=c++11 -c Wav.cpp
+
+Echo.o: Echo.cpp Echo.h Wav.h IAudioProcessor.h Wav.h
+	g++ -std=c++11 -c Echo.cpp
+
+Normalization.o: Normalization.cpp Normalization.h IAudioProcessor.h Wav.h
+	g++ -std=c++11 -c Normalization.cpp
 
 clean:
 	rm audio *.o
